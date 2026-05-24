@@ -1,0 +1,15 @@
+[Unit]
+Description=Load awesome-nftable-conf ruleset
+Before=network-pre.target
+Wants=network-pre.target
+After=systemd-modules-load.service
+
+[Service]
+Type=oneshot
+# Adjust path to your generated profile
+ExecStart=/usr/sbin/nft -f /etc/nftables/fireproof.nft
+ExecReload=/usr/sbin/nft -f /etc/nftables/fireproof.nft
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

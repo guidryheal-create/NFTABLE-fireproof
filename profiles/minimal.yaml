@@ -1,0 +1,18 @@
+# Overrides merged with profiles/_defaults.yaml
+
+profile:
+  name: minimal
+  description: Kill-switch + Tor proxy only — no VPN or Tailscale
+
+interfaces:
+  wan: eth0
+
+network:
+  lan_cidr: "192.168.0.0/24"
+
+bridge_interfaces: []
+
+features:
+  proton_wan_bootstrap: false
+  vpn: false
+  tailscale: false

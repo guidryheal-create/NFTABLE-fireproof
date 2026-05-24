@@ -1,0 +1,49 @@
+# Merged into every profile automatically. Override only what differs.
+
+interfaces:
+  wan: eth0
+  vpn: proton0
+  tailscale: tailscale0
+
+network:
+  lan_cidrs:
+    - "192.168.1.0/24"
+
+tor:
+  socks_port: 9050
+
+marks:
+  proxy: "0x1"
+  tor: "0x2"
+
+redirect_ports:
+  - 80
+  - 443
+
+# Ports that get `ct state new` when marked (443 avoids re-marking established TLS)
+proxy:
+  mark_new_only_ports:
+    - 443
+
+bridge_interfaces:
+  - docker0
+  - virbr0
+
+features:
+  input_drop: true
+  killswitch: true
+  proton_wan_bootstrap: true
+  vpn: true
+  tailscale: true
+  tor_proxy: true
+  lan_input: true
+  lan_output: true
+  docker_forward: true
+  icmp: true
+  block_ipv6: false
+
+input_extra: []
+forward_extra: []
+output_extra: []
+nat_prerouting_extra: []
+nat_output_extra: []

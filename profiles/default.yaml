@@ -1,0 +1,13 @@
+# Overrides merged with profiles/_defaults.yaml
+
+profile:
+  name: default
+  description: Home workstation — ProtonVPN over Tor, Tailscale, Docker
+
+interfaces:
+  wan: enp3s0
+  vpn: proton0
+  tailscale: tailscale0
+
+network:
+  lan_cidr: "192.168.1.0/24"

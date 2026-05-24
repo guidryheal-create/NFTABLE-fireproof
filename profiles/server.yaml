@@ -1,0 +1,21 @@
+# Overrides merged with profiles/_defaults.yaml
+
+profile:
+  name: server
+  description: Headless server — strict kill-switch, Tailscale admin, no Tor redirect
+
+interfaces:
+  wan: ens3
+  vpn: proton0
+  tailscale: tailscale0
+
+network:
+  lan_cidr: "10.0.0.0/24"
+
+bridge_interfaces:
+  - docker0
+
+features:
+  tor_proxy: false
+  lan_input: false
+  lan_output: false

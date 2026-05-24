@@ -1,0 +1,50 @@
+# Reference for all profile keys. Not rendered.
+# Every profile is merged with profiles/_defaults.yaml — only override what differs.
+
+profile:
+  name: my-host          # required
+  description: "..."     # required
+
+interfaces:
+  wan: enp3s0            # required (physical uplink)
+  vpn: proton0           # used when features.vpn: true
+  tailscale: tailscale0  # used when features.tailscale: true
+
+network:
+  lan_cidr: "192.168.1.0/24"     # shorthand for a single LAN
+  lan_cidrs:                     # or list multiple subnets
+    - "192.168.1.0/24"
+    - "10.10.0.0/24"
+
+tor:
+  socks_port: 9050
+
+marks:
+  proxy: "0x1"
+  tor: "0x2"
+
+redirect_ports: [80, 443]
+
+proxy:
+  mark_new_only_ports: [443]     # only mark NEW flows on these ports
+
+bridge_interfaces: [docker0, virbr0]
+
+features:
+  input_drop: true               # input policy drop
+  killswitch: true               # output policy drop
+  proton_wan_bootstrap: true     # WAN ct new,established (VPN dial-out)
+  vpn: true
+  tailscale: true
+  tor_proxy: true                # proxy_mark + NAT redirect
+  lan_input: true
+  lan_output: true
+  docker_forward: true
+  icmp: true
+  block_ipv6: false              # drop all IPv6 egress in output chain
+
+input_extra: []                  # raw nft lines → input chain
+forward_extra: []                # raw nft lines → forward chain
+output_extra: []                 # raw nft lines → output chain
+nat_prerouting_extra: []
+nat_output_extra: []

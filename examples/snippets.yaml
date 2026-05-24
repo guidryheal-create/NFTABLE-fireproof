@@ -1,0 +1,34 @@
+# Example snippets — paste into profile YAML under the relevant *_extra key
+
+# --- Allow DNS to your resolver only (output_extra) ---
+# output_extra:
+#   - 'udp dport 53 ip daddr 192.168.1.1 accept'
+#   - 'tcp dport 53 ip daddr 192.168.1.1 accept'
+
+# --- Allow NTP (output_extra) ---
+# output_extra:
+#   - 'udp dport 123 accept'
+
+# --- Block all IPv6 egress (features) ---
+# features:
+#   block_ipv6: true
+
+# --- Redirect additional ports through Tor ---
+# redirect_ports:
+#   - 80
+#   - 443
+#   - 8080
+
+# --- SSH from LAN only (input_extra) ---
+# input_extra:
+#   - 'tcp dport 22 ip saddr 192.168.1.0/24 accept'
+
+# --- Allow a specific outbound host (output_extra) ---
+# output_extra:
+#   - 'ip daddr 203.0.113.10 tcp dport 443 accept'
+
+# --- Multiple LAN subnets ---
+# network:
+#   lan_cidrs:
+#     - "192.168.1.0/24"
+#     - "10.10.0.0/24"

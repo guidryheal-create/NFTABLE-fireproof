@@ -1,0 +1,13 @@
+# Overrides merged with profiles/_defaults.yaml
+
+profile:
+  name: laptop
+  description: Laptop on Wi-Fi — Proton over Tor, no Docker bridges
+
+interfaces:
+  wan: wlp2s0
+
+bridge_interfaces: []
+
+features:
+  docker_forward: false
